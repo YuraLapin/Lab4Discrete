@@ -44,5 +44,5 @@ def get_spf(matrix, resulting_array):
 def find_spf(matrix):
 	if matrix_functions.check_matrix(matrix):
 		print(consts.LINE)
-		print("ярусно-параллельная форма:")
+		print("Ярусно-параллельная форма:")
 		print(get_spf(matrix, []))

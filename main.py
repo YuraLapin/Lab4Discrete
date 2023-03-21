@@ -1,9 +1,8 @@
-import copy
-import matrix_functions
-import spf
-import components
-import consts
 import user_inputs
+import consts
+import matrix_functions
+import components
+import spf
 
 def main():
 	size = user_inputs.get_positive_int("Введите размер матрицы: ")
@@ -18,12 +17,15 @@ def main():
 		print("2 - Удалить связь")
 		print("3 - Найти компоненты связности")
 		print("4 - Построить ярусно-параллельную форму")
-		print("5 - Выход")
+		print("5 - Построить клику")
+		print("6 - Построить маршрут из точки A в точку B алгоритмом Дейкстры")
+		print("7 - Выход")
 		ans = user_inputs.get_int("Выберите действие [1-3]: ")
 		if ans == 1:
 			n_1 = user_inputs.get_positive_int_lower_than("Введите номер вершины отправления: ", size)
 			n_2 = user_inputs.get_positive_int_lower_than("Введите номер вершины прибытия: ", size)
-			matrix[n_1 - 1][n_2 - 1] = 1	
+			weight = user_inputs.get_positive_int("Введите вес ребра: ")
+			matrix[n_1 - 1][n_2 - 1] = weight	
 		elif ans == 2:
 			n_1 = user_inputs.get_positive_int_lower_than("Введите номер вершины отправления: ", size)
 			n_2 = user_inputs.get_positive_int_lower_than("Введите номер вершины прибытия: ", size)
@@ -33,6 +35,12 @@ def main():
 		elif ans == 4:
 			spf.find_spf(matrix)
 		elif ans == 5:
+			print("ERROR")
+		elif ans == 6:
+			n_1 = user_inputs.get_positive_int_lower_than("Введите номер вершины отправления: ", size)
+			n_2 = user_inputs.get_positive_int_lower_than("Введите номер вершины прибытия: ", size)
+			print("ERROR")
+		elif ans == 7:
 			go_on = False
 		else:
 			print("Введено неверное число")

@@ -5,20 +5,29 @@ def check_matrix(matrix):
 			return False
 	return True
 
-def print_matrix_element(num, matrix_size):
-	spaces = len(str(matrix_size)) - len(str(num)) + 1
+def print_matrix_element(num, max_element_size):
+	spaces = max_element_size - len(str(num)) + 1
 	print(num, end = spaces * " ")
+
+def max_element(matrix):
+	current_max = matrix[0][0]
+	for arr in matrix:
+		for elem in arr:
+			if elem > current_max:
+				current_max = elem
+	return current_max
 
 def print_matrix(matrix):
 	if check_matrix(matrix):
 		size = len(matrix)
+		max_element_size = max(len(str(max_element(matrix))), len(str(size)))
 		for i in range(size + 1):
-			print_matrix_element(i, size)
+			print_matrix_element(i, max_element_size)
 		print()
 		for i in range(size):
-			print_matrix_element(i + 1, size)
+			print_matrix_element(i + 1, max_element_size)
 			for j in range(size):
-				print_matrix_element(matrix[i][j], size)
+				print_matrix_element(matrix[i][j], max_element_size)
 			print()
 			
 def fill_matrix_with_zero(size):
