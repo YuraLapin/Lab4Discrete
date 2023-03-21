@@ -1,6 +1,16 @@
 import matrix_functions
 import consts
 import copy
+import components
+
+def has_cycles(matrix):
+	new_matrix = components.set_to_ones(matrix)
+	new_matrix = matrix_functions.rise_matrix_to_power(new_matrix, len(new_matrix) + 1)
+	for arr in new_matrix:
+		for elem in arr:
+			if elem != 0:
+				return True
+	return False
 
 def restore_position(num, previous_array):
 	checked = []
@@ -44,5 +54,8 @@ def get_spf(matrix, resulting_array):
 def find_spf(matrix):
 	if matrix_functions.check_matrix(matrix):
 		print(consts.LINE)
-		print("Ярусно-параллельная форма:")
-		print(get_spf(matrix, []))
+		print("Ярусно-параллельная форма:")		
+		if has_cycles(matrix):
+			print("ЯПФ не может быть получена, так как в графе есть цикл")
+		else:
+			print(get_spf(matrix, []))
