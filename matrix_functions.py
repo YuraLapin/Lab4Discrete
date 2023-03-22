@@ -98,3 +98,13 @@ def logical_and(matrix_1, matrix_2):
 				else:
 					ans[i][j] = 0
 	return ans
+
+def set_to_ones(matrix):
+	if (check_matrix(matrix)):
+		size = len(matrix)
+		new_matrix = fill_matrix_with_zero(size)
+		for i in range(size):
+			for j in range(size):
+				if matrix[i][j] != 0:
+					new_matrix[i][j] = 1
+	return new_matrix

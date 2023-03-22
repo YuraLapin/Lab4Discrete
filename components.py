@@ -9,16 +9,6 @@ def count(list):
 			ans += 1
 	return ans
 
-def set_to_ones(matrix):
-	if (matrix_functions.check_matrix(matrix)):
-		size = len(matrix)
-		new_matrix = matrix_functions.fill_matrix_with_zero(size)
-		for i in range(size):
-			for j in range(size):
-				if matrix[i][j] != 0:
-					new_matrix[i][j] = 1
-	return new_matrix
-
 def get_components(matrix, resulting_array):
 	if matrix_functions.check_matrix(matrix):
 		new_matrix = copy.deepcopy(matrix)
@@ -45,7 +35,7 @@ def find_components(matrix):
 		size = len(matrix)
 
 		print(consts.LINE, "\nR:")
-		m = set_to_ones(matrix)
+		m = matrix_functions.set_to_ones(matrix)
 		r = matrix_functions.sum_of_line_of_matrix(matrix, size)
 		matrix_functions.print_matrix(r)
 

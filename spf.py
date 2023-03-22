@@ -1,10 +1,9 @@
 import matrix_functions
 import consts
 import copy
-import components
 
 def has_cycles(matrix):
-	new_matrix = components.set_to_ones(matrix)
+	new_matrix = matrix_functions.set_to_ones(matrix)
 	new_matrix = matrix_functions.rise_matrix_to_power(new_matrix, len(new_matrix) + 1)
 	for arr in new_matrix:
 		for elem in arr:
