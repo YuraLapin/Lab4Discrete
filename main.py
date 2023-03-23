@@ -4,10 +4,12 @@ import matrix_functions
 import components
 import spf
 import dijkstra
+import clique
 
 def main():
 	size = user_inputs.get_positive_int("Введите размер матрицы: ")
 	matrix = matrix_functions.fill_matrix_with_zero(size)
+	#matrix = [[0, 1, 1, 1, 0, 0], [1, 0, 1, 0, 0, 0], [1, 1, 0, 1, 0, 0], [1, 0, 1, 0, 1, 1], [0, 0, 0, 1, 0, 1], [0, 0, 0, 1, 1, 0]]
 
 	go_on = True
 	while go_on:
@@ -46,7 +48,9 @@ def main():
 			n_2 = user_inputs.get_positive_int_lower_than("Введите номер вершины прибытия: ", size)
 			dijkstra.find_path(matrix, n_1 - 1, n_2 - 1)
 		elif ans == 7:
-			print("ERROR")
+			print(consts.LINE)
+			clique_size = user_inputs.get_positive_int("Введите длину клики для поиска: ")
+			clique.find_cliques(matrix, clique_size)
 		elif ans == 8:
 			go_on = False
 		else:
