@@ -9,7 +9,10 @@ import clique
 def main():
 	size = user_inputs.get_positive_int("Введите размер матрицы: ")
 	matrix = matrix_functions.fill_matrix_with_zero(size)
+	#matrix = [[0, 1, 1, 1, 1], [1, 0, 0, 1, 1], [1, 0, 0, 0, 0], [1, 1, 0, 0, 1], [1, 1, 0, 1, 0]]
+	#matrix = [[0, 0, 0, 0, 1, 1], [0, 0, 1, 1, 0, 0], [0, 1, 0, 1, 0, 1], [0, 1, 1, 0, 0, 0], [1, 0, 0, 0, 0, 1], [1, 0, 1, 0, 1, 0]]
 	#matrix = [[0, 1, 1, 1, 0, 0], [1, 0, 1, 0, 0, 0], [1, 1, 0, 1, 0, 0], [1, 0, 1, 0, 1, 1], [0, 0, 0, 1, 0, 1], [0, 0, 0, 1, 1, 0]]
+	#matrix = [[0, 1, 1, 1, 1, 1], [1, 0, 1, 0, 1, 0], [1, 1, 0, 1, 1, 0], [1, 0, 1, 0, 0, 0], [1, 1, 1, 0, 0, 1], [1, 0, 0, 0, 1, 0]]
 
 	go_on = True
 	while go_on:
@@ -22,7 +25,7 @@ def main():
 		print("4 - Найти компоненты связности")
 		print("5 - Построить ярусно-параллельную форму")
 		print("6 - Построить маршрут из точки A в точку B алгоритмом Дейкстры")
-		print("7 - Построить клику")
+		print("7 - Найти клики")
 		print("8 - Выход")
 		ans = user_inputs.get_int("Выберите действие [1-3]: ")
 		if ans == 1:
@@ -48,9 +51,7 @@ def main():
 			n_2 = user_inputs.get_positive_int_lower_than("Введите номер вершины прибытия: ", size)
 			dijkstra.find_path(matrix, n_1 - 1, n_2 - 1)
 		elif ans == 7:
-			print(consts.LINE)
-			clique_size = user_inputs.get_positive_int("Введите длину клики для поиска: ")
-			clique.find_cliques(matrix, clique_size)
+			clique.find_cliques(matrix)
 		elif ans == 8:
 			go_on = False
 		else:
